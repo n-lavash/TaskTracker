@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{D86264B8-D897-4EA6-B7B2-1D98C2B02EA3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{81E65F73-45F2-44D8-856E-B2B6B8BABD82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PL", "PL", "{AC0B00AF-C7A2-4097-B5B4-A00C15E9D67D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.BLL", "TaskTracker.BLL\TaskTracker.BLL.csproj", "{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.BLL.Interfaces", "TaskTracker.BLL.Interfaces\TaskTracker.BLL.Interfaces.csproj", "{18DEBF80-1074-4473-8BA0-85309AD0074A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.DAL", "TaskTracker.DAL\TaskTracker.DAL.csproj", "{A58C70F8-E507-4BF7-A137-504ECB9778BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.DAL.Interfaces", "TaskTracker.DAL.Interfaces\TaskTracker.DAL.Interfaces.csproj", "{24E1FEF5-EFD1-4669-8226-3FE84E5324DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.PL", "TaskTracker.PL\TaskTracker.PL.csproj", "{635A26EF-A73D-41B4-9A04-77A0084E8DB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{042DDC6A-0BB4-40A0-BFC0-448BC39A76AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Entity", "TaskTracker.Entity\TaskTracker.Entity.csproj", "{C2E9CE58-7376-46E4-81EA-2FF68259998B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18DEBF80-1074-4473-8BA0-85309AD0074A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DEBF80-1074-4473-8BA0-85309AD0074A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DEBF80-1074-4473-8BA0-85309AD0074A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DEBF80-1074-4473-8BA0-85309AD0074A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58C70F8-E507-4BF7-A137-504ECB9778BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58C70F8-E507-4BF7-A137-504ECB9778BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58C70F8-E507-4BF7-A137-504ECB9778BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58C70F8-E507-4BF7-A137-504ECB9778BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24E1FEF5-EFD1-4669-8226-3FE84E5324DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24E1FEF5-EFD1-4669-8226-3FE84E5324DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24E1FEF5-EFD1-4669-8226-3FE84E5324DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24E1FEF5-EFD1-4669-8226-3FE84E5324DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635A26EF-A73D-41B4-9A04-77A0084E8DB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635A26EF-A73D-41B4-9A04-77A0084E8DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635A26EF-A73D-41B4-9A04-77A0084E8DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635A26EF-A73D-41B4-9A04-77A0084E8DB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E9CE58-7376-46E4-81EA-2FF68259998B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E9CE58-7376-46E4-81EA-2FF68259998B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E9CE58-7376-46E4-81EA-2FF68259998B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E9CE58-7376-46E4-81EA-2FF68259998B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9} = {81E65F73-45F2-44D8-856E-B2B6B8BABD82}
+		{18DEBF80-1074-4473-8BA0-85309AD0074A} = {81E65F73-45F2-44D8-856E-B2B6B8BABD82}
+		{A58C70F8-E507-4BF7-A137-504ECB9778BD} = {D86264B8-D897-4EA6-B7B2-1D98C2B02EA3}
+		{24E1FEF5-EFD1-4669-8226-3FE84E5324DE} = {D86264B8-D897-4EA6-B7B2-1D98C2B02EA3}
+		{635A26EF-A73D-41B4-9A04-77A0084E8DB7} = {AC0B00AF-C7A2-4097-B5B4-A00C15E9D67D}
+		{C2E9CE58-7376-46E4-81EA-2FF68259998B} = {042DDC6A-0BB4-40A0-BFC0-448BC39A76AF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CBC0D423-8D30-4924-B4E5-BEA97292D7BC}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TaskTracker.PL.Models.UserTaskModel>
+
+@{
+    ViewData["Title"] = "GetUsersTask";
+}
+
+<h1>My Tasks</h1>
+
+<p>
+    <a asp-action="AddTask" asp-controller="Task">Create new task</a>
+</p>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeadLine)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DeadLine)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit task", "EditTask", "Task", new { id=item.Id }, null) |
+                        @Html.ActionLink("Show task", "GetTask", "Task", new { id=item.Id }, null) |
+                        @Html.ActionLink("Delete task", "DeleteTask", "Task", new { id=item.Id }, null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

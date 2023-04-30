@@ -1,0 +1,44 @@
+﻿@model TaskTracker.PL.Models.UserModel
+
+@{
+    ViewData["Title"] = "EditUser";
+}
+
+<h1>Edit main data</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form id="editUserForm" asp-action="EditUser">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+            </div>
+            <div id="errorMessage" class="text-danger" style="display:none;">Please fill in all required fields</div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById('editUserForm').addEventListener('submit', function (event) {
+        var name = document.getElementById('Name').value;
+        var phoneNumber = document.getElementById('PhoneNumber').value;
+
+        if (!name || !phoneNumber) {
+            event.preventDefault();
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+    });
+</script>
+
+<div>
+    <a asp-action="GetUserAccount" asp-controller="Home">Cancel</a>
+</div>
+
