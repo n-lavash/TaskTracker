@@ -1,0 +1,41 @@
+version: '3.4'
+
+networks:    
+  tasktracker:
+
+services:
+  demoappdb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+     - 8002:1433
+    environment:
+     - ACCEPT_EULA=Y
+     - SA_PASSWORD=Password1234%
+    volumes:
+     - ./data:/var/opt/mssql/data
+    networks:
+      - tasktracker
+  redis_image:
+    image: redis
+    container_name: Redis
+    ports:
+      - 6379:6379
+    networks:
+      - tasktracker
+  tasktracker.pl:
+    image: ${DOCKER_REGISTRY-}tasktrackerpl
+    build:
+      context: .
+      dockerfile: TaskTracker.PL/Dockerfile
+    depends_on:
+      - demoappdb
+      - redis_image
+    environment:
+      - DB_HOST=demoappdb
+      - DB_NAME=TaskManager
+      - DB_SA_PASSWORD=Password1234%
+    networks:
+      - tasktracker
+    links:
+      - redis_image

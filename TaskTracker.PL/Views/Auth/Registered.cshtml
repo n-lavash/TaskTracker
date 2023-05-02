@@ -1,66 +1,95 @@
 ﻿@model TaskTracker.PL.Models.AccountUserModel
 
 @{
-    ViewData["Title"] = "Registered";
+    Layout = null;
 }
 
-<h1>Registered</h1>
+<!DOCTYPE html>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form id="regForm" asp-action="Registered">
-            
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registered</title>
+    <style>
+        form {
+            width: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 130%;
+        }
+
+        form input[type="text"],
+        form input[type="password"],
+        form input[type="tel"] {
+            width: 150%;
+            max-width: 300px;
+            font-size: 1.2em;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <hr />
+    <div>
+        <form method="post" action="/auth/registered">
+            <div style="display: flex; flex-direction: column; text-align: center;">
+                <label for="name" style="align-self: flex-start;">Name:</label>
+                <input type="text" id="name" name="Name" />
             </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
+            <div style="display: flex; flex-direction: column; text-align: center;">
+                <label for="phoneNumber" style="align-self: flex-start;">Phone number:</label>
+                <input type="tel" id="phoneNumber" name="PhoneNumber" />
             </div>
-            <div class="form-group">
-                <label asp-for="Login" class="control-label"></label>
-                <input asp-for="Login" class="form-control" />
+            <div style="display: flex; flex-direction: column; text-align: center;">
+                <label for="login" style="align-self: flex-start;">Login:</label>
+                <input type="text" id="login" name="Login" />
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+            <div style="display: flex; flex-direction: column; text-align: center;">
+                <label for="password" style="align-self: flex-start;">Password:</label>
+                <input type="password" id="password" name="Password" />
             </div>
             <div>
-                Не можете придумать пароль? Воспользуйтесь нашим ботом! Он сгенирирует вам его!
-                <a href="https://t.me/give_you_password_pupsik_bot">Тык</a>
+                <span class="error" style="display:none; align-self: flex-start;">All fields must be filled in!</span>
             </div>
-            <div id="errorMessage" class="text-danger" style="display:none;">Please fill in all required fields</div>
-            <div class="form-group" style="margin-top:50px">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div style="align-self: flex-start; margin-top: 10px;">
+                <input type="submit" value="Register" onclick="return validateForm();" />
+            </div>
+            <div style="align-self: flex-start; margin-top: 10px;">
+                <a href="/auth/login">I already have account yet</a>
             </div>
         </form>
     </div>
-</div>
 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', function (event) {
-        var login = document.getElementById('Login').value;
-        var password = document.getElementById('Password').value;
-        var name = document.getElementById('Name').value;
-        var phoneNumber = document.getElementById('PhoneNumber').value;
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+            var login = document.getElementById("login").value;
+            var password = document.getElementById("password").value;
 
-        if (!login || !password || !name || !phoneNumber) {
-            event.preventDefault();
-            document.getElementById('errorMessage').style.display = 'block';
+            if (login == "" || password == "" || name == "" || phoneNumber == "") {
+                var errorSpans = document.getElementsByClassName("error");
+                for (var i = 0; i < errorSpans.length; i++) {
+                    errorSpans[i].style.display = "inline";
+                }
+                return false;
+            }
         }
-    });
-</script>
-
-<div>
-    <a asp-action="Login">I already have an account</a>
-</div>
-
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
-
+    </script>
+</body>
+</html>

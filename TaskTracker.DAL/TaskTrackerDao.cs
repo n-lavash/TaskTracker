@@ -19,7 +19,7 @@ namespace TaskTracker.DAL
         {
             _connectionString = connectionString;
         }
-        public async Task<bool> AddTask(int idUser, string title, string descriptionInfo, DateTime creationDate, DateTime deadline)
+        public async Task<UserTask> AddTask(int idUser, string title, string descriptionInfo, DateTime creationDate, DateTime deadline)
         {
             using (_connection = new SqlConnection(_connectionString))
             {
@@ -41,8 +41,17 @@ namespace TaskTracker.DAL
 
                     _connection.Open();
 
-                    var result = command.ExecuteNonQuery();
-                    return result > 0;
+                    var reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        return new UserTask(
+                            id: Convert.ToInt32(reader["ID_Task"]),
+                            title: reader["Title"] as string,
+                            description: reader["DescriptionInfo"] as string,
+                            createdDate: Convert.ToDateTime(reader["CreatedDate"]),
+                            deadline: Convert.ToDateTime(reader["Deadline"]));
+                    }
                 }
                 catch (SqlException ex)
                 {
@@ -57,7 +66,7 @@ namespace TaskTracker.DAL
             }
         }
 
-        public async Task<bool> AddUser(string name, string login, string password, string phoneNumber)
+        public async Task<User> AddUser(string name, string login, string password, string phoneNumber)
         {
             using (_connection = new SqlConnection(_connectionString))
             {
@@ -77,8 +86,15 @@ namespace TaskTracker.DAL
 
                 try
                 {
-                    var result = command.ExecuteNonQuery();
-                    return result > 0;
+                    var reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        return new User(
+                            id: Convert.ToInt32(reader["ID_User"]),
+                            name: reader["NameUser"] as string,
+                            phoneNumber: (reader["PhoneNumber"]).ToString());
+                    }
                 }
                 catch (SqlException ex)
                 {
@@ -178,7 +194,7 @@ namespace TaskTracker.DAL
             }
         }
 
-        public async Task<bool> EditTask(int taskId, string title, string description, DateTime createdDate, DateTime deadline)
+        public async Task<UserTask> EditTask(int taskId, string title, string description, DateTime createdDate, DateTime deadline)
         {
             using (_connection = new SqlConnection(_connectionString))
             {
@@ -200,17 +216,30 @@ namespace TaskTracker.DAL
 
                     _connection.Open();
 
-                    var result = command.ExecuteNonQuery();
-                    return result > 0;
+                    var reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        return new UserTask(
+                            id: Convert.ToInt32(reader["ID_Task"]),
+                            title: reader["Title"] as string,
+                            description: reader["DescriptionInfo"] as string,
+                            createdDate: Convert.ToDateTime(reader["CreatedDate"]),
+                            deadline: Convert.ToDateTime(reader["Deadline"]));
+                    }
                 }
                 catch (SqlException ex)
                 {
                     throw new Exception(ex.Message);
                 }
+
+                throw new InvalidOperationException(
+                    string.Format("Cannot edit task with parameters: {0}, {1}, {2}, {3}",
+                    title, description, createdDate, deadline));
             }
         }
 
-        public async Task<bool> EditUser(User user)
+        public async Task<User> EditUser(User user)
         {
             using (_connection = new SqlConnection(_connectionString))
             {
@@ -230,13 +259,24 @@ namespace TaskTracker.DAL
 
                     _connection.Open();
 
-                    var result = command.ExecuteNonQuery();
-                    return result > 0;
+                    var reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        return new User(
+                            id: Convert.ToInt32(reader["ID_User"]),
+                            name: reader["NameUser"] as string,
+                            phoneNumber: (reader["PhoneNumber"]).ToString());
+                    }
                 }
                 catch (SqlException ex)
                 {
                     throw new Exception(ex.Message);
                 }
+
+                throw new InvalidOperationException(
+                    string.Format("Cannot edit user with parameters: {0}, {1}",
+                    user.Name, user.PhoneNumber));
             }
         }
 
@@ -294,6 +334,62 @@ namespace TaskTracker.DAL
                 }
 
                 throw new InvalidOperationException("Cannot find Account whith login = " + login);
+            }
+        }
+
+        public async Task<List<UserTask>> GetAllTasks()
+        {
+            using (_connection = new SqlConnection(_connectionString))
+            {
+                var query = "SELECT * FROM Task";
+                var command = new SqlCommand(query, _connection);
+
+                _connection.Open();
+
+                var reader = command.ExecuteReader();
+
+                var tasks = new List<UserTask>();
+
+                while (reader.Read())
+                {
+                    tasks.Add(new UserTask(
+                        id: Convert.ToInt32(reader["ID_Task"]),
+                        title: reader["Title"] as string,
+                        description: reader["DescriptionInfo"] as string,
+                        createdDate: Convert.ToDateTime(reader["CreatedDate"]),
+                        deadline: Convert.ToDateTime(reader["Deadline"]))
+                        );
+
+                }
+
+                return tasks;
+            }
+        }
+
+        public async Task<List<User>> GetAllUser()
+        {
+            using (_connection = new SqlConnection(_connectionString))
+            {
+                var query = "SELECT * FROM Users";
+                var command = new SqlCommand(query, _connection);
+
+                _connection.Open();
+
+                var reader = command.ExecuteReader();
+
+                var users = new List<User>();
+
+                while (reader.Read())
+                {
+                    users.Add(new User(
+                        id: Convert.ToInt32(reader["ID_User"]),
+                        name: reader["NameUser"] as string,
+                        phoneNumber: (reader["PhoneNumber"]).ToString())
+                        );
+
+                }
+
+                return users;
             }
         }
 

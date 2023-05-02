@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TaskTrackerWeb.Entity
@@ -23,6 +24,7 @@ namespace TaskTrackerWeb.Entity
             Deadline = deadline;
         }
 
+        [JsonConstructor]
         public UserTask(int id, string title, string description, DateTime createdDate, DateTime deadline) : this(id, title, description, deadline)
         {
             CreatedDate = createdDate;

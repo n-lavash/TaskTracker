@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TaskTrackerWeb.Entity
@@ -12,6 +13,7 @@ namespace TaskTrackerWeb.Entity
         public string Name { get; private set; }
         public string PhoneNumber { get; private set; }
 
+        [JsonConstructor]
         public User(int id, string name, string phoneNumber)
         {
             Id = id;

@@ -1,49 +1,53 @@
 ﻿@model TaskTracker.PL.Models.UserTaskModel
 
 @{
-    ViewData["Title"] = "EditTask";
+    Layout = null;
 }
 
-<h1>Edit task @Model.Title</h1>
+<!DOCTYPE html>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form id="editTaskForm" asp-action="EditTask">
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="DeadLine" class="control-label"></label>
-                <input asp-for="DeadLine" class="form-control" />
-            </div>
-            <div id="errorMessage" class="text-danger" style="display:none;">Please fill in all required fields</div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<script>
-    document.getElementById('editTaskForm').addEventListener('submit', function (event) {
-        var title = document.getElementById('Title').value;
-        var description = document.getElementById('Description').value;
-        var deadline = document.getElementById('DeadLine').value;
-
-        if (!title || !description || !deadline) {
-            event.preventDefault();
-            document.getElementById('errorMessage').style.display = 'block';
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditTask</title>
+    <style>
+        body {
+            font-size: 130%;
         }
-    });
-</script>
+    </style>
+</head>
+<body>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditTask">
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Title" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Description" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeadLine" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="DeadLine" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+                <div>
+                    <a href="/home/GetUsersTask">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<div>
-    <a asp-action="GetUsersTask" asp-controller="Home">Cancel</a>
-</div>
-
+</body>
+</html>

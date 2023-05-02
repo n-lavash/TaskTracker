@@ -1,44 +1,48 @@
 ﻿@model TaskTracker.PL.Models.AccountModel
 
 @{
-    ViewData["Title"] = "EditAccount";
+    Layout = null;
 }
 
-<h1>Edit private data</h1>
+<!DOCTYPE html>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form id="editAccountForm" asp-action="EditAccount">
-            <div class="form-group">
-                <label asp-for="Login" class="control-label"></label>
-                <input asp-for="Login" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-            </div>
-            <div id="errorMessage" class="text-danger" style="display:none;">Please fill in all required fields</div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditAccount</title>
 
-<script>
-    document.getElementById('editAccountForm').addEventListener('submit', function (event) {
-        var login = document.getElementById('Login').value;
-        var password = document.getElementById('Password').value;
-
-        if (!login || !password) {
-            event.preventDefault();
-            document.getElementById('errorMessage').style.display = 'block';
+    <style>
+        body {
+            font-size: 130%;
         }
-    });
-</script>
+    </style>
+</head>
+<body>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditAccount">
+                <div class="form-group">
+                    <label asp-for="Login" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Login" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+                <div>
+                    <a href="/home/GetUserAccount">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<div>
-    <a asp-action="GetUserAccount" asp-controller="Home">Cancel</a>
-</div>
-
+</body>
+</html>

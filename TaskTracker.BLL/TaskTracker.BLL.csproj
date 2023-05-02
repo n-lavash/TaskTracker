@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.6.104" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TaskTracker.BLL.Interfaces\TaskTracker.BLL.Interfaces.csproj" />
     <ProjectReference Include="..\TaskTracker.DAL.Interfaces\TaskTracker.DAL.Interfaces.csproj" />
   </ItemGroup>

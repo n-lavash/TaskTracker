@@ -4,65 +4,50 @@
     ViewData["Title"] = "GetUsersTask";
 }
 
+<head>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
 <h1>My Tasks</h1>
 
 <p>
-    <a asp-action="AddTask" asp-controller="Task">Create new task</a>
+    <form method="post" action="@Url.Action("AddTask", "Task")">
+        <input type="submit" value="Add new task" />
+    </form>
 </p>
 
-@if (ViewBag.Message != null)
-{
-    <p>@ViewBag.Message</p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DeadLine)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DeadLine)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit task", "EditTask", "Task", new { id=item.Id }, null) |
-                        @Html.ActionLink("Show task", "GetTask", "Task", new { id=item.Id }, null) |
-                        @Html.ActionLink("Delete task", "DeleteTask", "Task", new { id=item.Id }, null)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<body>
+    @if (ViewBag.Message != null)
+    {
+        <div>@ViewBag.Message</div>
+    }
+    else
+    {
+        @foreach (var task in Model)
+        {
+            <a href="@Url.Action("GetTask", "Task", new { id = task.Id })">
+                <div style="border: 1px solid black; padding: 10px; margin: 10px;">
+                    <div>
+                        <h3>@task.Title</h3>
+                        <p>@task.Description</p>
+                        <p>Created: @task.CreatedDate.ToShortDateString()</p>
+                        <p>Deadline: @task.DeadLine.ToShortDateString()</p>
+                    </div>
+                    <form method="post" action="@Url.Action("DeleteTask", "Task")" style="display: inline-block">
+                        <input type="hidden" name="id" value="@task.Id" />
+                        <input type="submit" value="Delete" />
+                    </form>
+                    <form method="get" action="@Url.Action("EditTask", "Task")" style="display: inline-block">
+                        <input type="hidden" name="id" value="@task.Id" />
+                        <input type="submit" value="Edit" />
+                    </form>
+                </div>
+            </a>
+        }
+    }
+</body>

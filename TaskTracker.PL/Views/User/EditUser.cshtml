@@ -1,44 +1,48 @@
 ﻿@model TaskTracker.PL.Models.UserModel
 
 @{
-    ViewData["Title"] = "EditUser";
+    Layout = null;
 }
 
-<h1>Edit main data</h1>
+<!DOCTYPE html>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form id="editUserForm" asp-action="EditUser">
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-            </div>
-            <div id="errorMessage" class="text-danger" style="display:none;">Please fill in all required fields</div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<script>
-    document.getElementById('editUserForm').addEventListener('submit', function (event) {
-        var name = document.getElementById('Name').value;
-        var phoneNumber = document.getElementById('PhoneNumber').value;
-
-        if (!name || !phoneNumber) {
-            event.preventDefault();
-            document.getElementById('errorMessage').style.display = 'block';
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditUser</title>
+    <style>
+        body {
+            font-size: 130%;
         }
-    });
-</script>
+    </style>
+</head>
+<body>
 
-<div>
-    <a asp-action="GetUserAccount" asp-controller="Home">Cancel</a>
-</div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditUser">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input asp-for="PhoneNumber" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+                <div>
+                    <a href="/home/GetUserAccount">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
+</body>
+</html>

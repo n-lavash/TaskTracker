@@ -9,19 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BLL", "BLL", "{81E65F73-45F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PL", "PL", "{AC0B00AF-C7A2-4097-B5B4-A00C15E9D67D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.BLL", "TaskTracker.BLL\TaskTracker.BLL.csproj", "{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.BLL", "TaskTracker.BLL\TaskTracker.BLL.csproj", "{40804C3C-5DF7-453C-BAAE-5CFB8FBA7BD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.BLL.Interfaces", "TaskTracker.BLL.Interfaces\TaskTracker.BLL.Interfaces.csproj", "{18DEBF80-1074-4473-8BA0-85309AD0074A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.BLL.Interfaces", "TaskTracker.BLL.Interfaces\TaskTracker.BLL.Interfaces.csproj", "{18DEBF80-1074-4473-8BA0-85309AD0074A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.DAL", "TaskTracker.DAL\TaskTracker.DAL.csproj", "{A58C70F8-E507-4BF7-A137-504ECB9778BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.DAL", "TaskTracker.DAL\TaskTracker.DAL.csproj", "{A58C70F8-E507-4BF7-A137-504ECB9778BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.DAL.Interfaces", "TaskTracker.DAL.Interfaces\TaskTracker.DAL.Interfaces.csproj", "{24E1FEF5-EFD1-4669-8226-3FE84E5324DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.DAL.Interfaces", "TaskTracker.DAL.Interfaces\TaskTracker.DAL.Interfaces.csproj", "{24E1FEF5-EFD1-4669-8226-3FE84E5324DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.PL", "TaskTracker.PL\TaskTracker.PL.csproj", "{635A26EF-A73D-41B4-9A04-77A0084E8DB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.PL", "TaskTracker.PL\TaskTracker.PL.csproj", "{635A26EF-A73D-41B4-9A04-77A0084E8DB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{042DDC6A-0BB4-40A0-BFC0-448BC39A76AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Entity", "TaskTracker.Entity\TaskTracker.Entity.csproj", "{C2E9CE58-7376-46E4-81EA-2FF68259998B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.Entity", "TaskTracker.Entity\TaskTracker.Entity.csproj", "{C2E9CE58-7376-46E4-81EA-2FF68259998B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DE1036DA-08D3-418D-A760-6E00170535B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{C2E9CE58-7376-46E4-81EA-2FF68259998B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E9CE58-7376-46E4-81EA-2FF68259998B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E9CE58-7376-46E4-81EA-2FF68259998B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1036DA-08D3-418D-A760-6E00170535B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1036DA-08D3-418D-A760-6E00170535B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1036DA-08D3-418D-A760-6E00170535B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1036DA-08D3-418D-A760-6E00170535B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
